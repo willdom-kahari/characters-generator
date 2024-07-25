@@ -27,6 +27,9 @@ public class CharacterGenerator {
         return generateCharacters(length, Arrays.asList(rules));
     }
 
+
+
+
     public String generateCharacters(final int length, final List<GeneratorRule> rules)
     {
         if (length <= 0) {
@@ -53,18 +56,18 @@ public class CharacterGenerator {
 
     }
 
-    protected void fillRandomCharacters(final CharSequence source, final int count, final Appendable target)
+    private void fillRandomCharacters(final CharSequence source, final int count, final Appendable target)
     {
         for (int i = 0; i < count; i++) {
             try {
                 target.append(source.charAt(random.nextInt(source.length())));
             } catch (IOException e) {
-                throw new RuntimeException("Error appending characters.", e);
+                throw new AppendingCharactersException("Error appending characters.", e);
             }
         }
     }
 
-    protected void randomize(final CharBuffer buffer)
+    private void randomize(final CharBuffer buffer)
     {
         char c;
         int n;
