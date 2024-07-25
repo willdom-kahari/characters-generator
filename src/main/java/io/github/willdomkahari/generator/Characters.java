@@ -1,13 +1,30 @@
 package io.github.willdomkahari.generator;
 
 /**
- * @author <a href="mailto:willdomkahari@gmail.com">Willdom Kahari</a>
+ * The character types required by the GeneratorRule.
+ *
+ * @author <a href="mailto:developer.wadu@gmail.com">Willdom Kahari</a>
  */
 public enum Characters {
+    /**
+     * Small letters also known as LowerCase letters
+     */
     SMALL("abcdefghijklmnopqrstuvwxyz"),
+    /**
+     * Capital letters also known as UpperCase letters
+     */
     CAPITAL("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),
-    ALPHABETICAL(SMALL.getCharacters().concat(CAPITAL.getCharacters())),
+    /**
+     * Numeric characters from 0 to 9
+     */
     NUMERIC("0123456789"),
+    /**
+     * Alphabetical characters (upper and lower case)
+     */
+    ALPHABETICAL(SMALL.getCharacters().concat(CAPITAL.getCharacters())),
+    /**
+     * Special characters (ASCII symbols, Latin-1 symbols, and Unicode symbols)
+     */
     SPECIAL(// ASCII symbols
             "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~" +
                     // Latin-1 symbols
