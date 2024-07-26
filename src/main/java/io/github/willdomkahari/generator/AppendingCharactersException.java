@@ -7,7 +7,7 @@ package io.github.willdomkahari.generator;
  */
 public class AppendingCharactersException extends RuntimeException{
     /**
-     *
+     *Exception thrown when trying to append characters
      * @param message - The message associated with the exception
      * @param cause - The cause of the exception
      */

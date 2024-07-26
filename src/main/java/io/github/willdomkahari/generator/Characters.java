@@ -45,6 +45,11 @@ public enum Characters {
         this.characterSet = characterSet;
     }
 
+    /**
+     * Get the character set associated with the Characters enum
+     *
+     * @return the character set
+     */
     public String getCharacters() {
         return characterSet;
     }

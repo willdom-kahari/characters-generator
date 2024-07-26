@@ -16,22 +16,39 @@ import java.util.Random;
 public class CharacterGenerator {
     private final Random random;
 
+    /**
+     * Instantiate a new CharacterGenerator with the provided randomizer
+     *
+     * @param random - The randomizer to use for generating characters
+     */
     public CharacterGenerator(final Random random) {
         this.random = random;
     }
 
     /**
-     * Instantiate a new CharacterGenerator with default randomiser as the <code>SecureRandom</code>
+     * Instantiate a new CharacterGenerator with default randomizer as the <code>SecureRandom</code>
      */
     public CharacterGenerator() {
         this(new SecureRandom());
     }
 
+    /**
+     * Generates characters using the provided rules
+     * @param length - The length of the returned generated characters
+     * @param rules - The rules to use for generating characters
+     * @return <code>String</code> - A string of characters based on the rules and length specified
+     */
     public String generateCharacters(final int length, final GeneratorRule... rules) {
         return generateCharacters(length, Arrays.asList(rules));
     }
 
 
+    /**
+     * Generates characters using the provided rules
+     * @param length - The length of the returned generated characters
+     * @param rules - The rules to use for generating characters
+     * @return <code>String</code> - A string of characters based on the rules and length specified
+     */
     public String generateCharacters(final int length, final List<GeneratorRule> rules) {
         if (length <= 0) {
             throw new IllegalArgumentException("length must be greater than 0");
