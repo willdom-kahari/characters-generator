@@ -34,8 +34,9 @@ public class CharacterGenerator {
 
     /**
      * Generates characters using the provided rules
+     *
      * @param length - The length of the returned generated characters
-     * @param rules - The rules to use for generating characters
+     * @param rules  - The rules to use for generating characters
      * @return <code>String</code> - A string of characters based on the rules and length specified
      */
     public String generateCharacters(final int length, final GeneratorRule... rules) {
@@ -45,28 +46,33 @@ public class CharacterGenerator {
 
     /**
      * Generates characters using the provided rules
+     *
      * @param length - The length of the returned generated characters
-     * @param rules - The rules to use for generating characters
+     * @param rules  - The rules to use for generating characters
      * @return <code>String</code> - A string of characters based on the rules and length specified
      */
+    @SuppressWarnings("RedundantCast")
     public String generateCharacters(final int length, final List<GeneratorRule> rules) {
         if (length <= 0) {
             throw new IllegalArgumentException("length must be greater than 0");
+        }
+        if (rules == null || rules.isEmpty()) {
+            throw new IllegalArgumentException("At least one rule must be provided");
         }
 
         final StringBuilder allChars = new StringBuilder();
 
         final CharBuffer buffer = CharBuffer.allocate(length);
-        if (rules != null) {
-            for (GeneratorRule rule : rules) {
-                fillRandomCharacters(
-                        rule.getCharacterSet(),
-                        Math.min(length, rule.getLength()),
-                        buffer
-                );
-                allChars.append(rule.getCharacterSet());
-            }
+
+        for (GeneratorRule rule : rules) {
+            fillRandomCharacters(
+                    rule.getCharacterSet(),
+                    Math.min(length, rule.getLength()),
+                    buffer
+            );
+            allChars.append(rule.getCharacterSet());
         }
+
         fillRandomCharacters(allChars, length - buffer.position(), buffer);
         // cast to Buffer prevents NoSuchMethodError when compiled on JDK9+ and run on JDK8
         ((Buffer) buffer).flip();
