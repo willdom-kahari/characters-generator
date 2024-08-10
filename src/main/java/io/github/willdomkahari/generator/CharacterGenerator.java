@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.Buffer;
 import java.nio.CharBuffer;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -15,6 +16,8 @@ import java.util.Random;
  */
 public class CharacterGenerator {
     private final Random random;
+    private int length;
+    private final List<GeneratorRule> rules = new ArrayList<>();
 
     /**
      * Instantiate a new CharacterGenerator with the provided randomizer
@@ -41,6 +44,21 @@ public class CharacterGenerator {
      */
     public String generateCharacters(final int length, final GeneratorRule... rules) {
         return generateCharacters(length, Arrays.asList(rules));
+    }
+
+    public static CharacterGenerator generateCharacters(){
+        return new CharacterGenerator();
+    }
+    public CharacterGenerator withLength(final int length) {
+        this.length = length;
+        return this;
+    }
+    public CharacterGenerator withRule(final GeneratorRule rule) {
+        this.rules.add(rule);
+        return this;
+    }
+    public String build() {
+        return generateCharacters(this.length, this.rules);
     }
 
 
@@ -92,11 +110,11 @@ public class CharacterGenerator {
     }
 
     private void shuffle(final CharBuffer buffer) {
-        int length = buffer.limit() - buffer.position();
-        char[] chars = new char[length];
+        int bufferLength = buffer.limit() - buffer.position();
+        char[] chars = new char[bufferLength];
 
         // Copy the buffer contents to the array
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < bufferLength; i++) {
             chars[i] = buffer.get(buffer.position() + i);
         }
 
@@ -104,7 +122,7 @@ public class CharacterGenerator {
         char temp;
 
         // Shuffle the array
-        for (int i = length - 1; i > 0; i--) {
+        for (int i = bufferLength - 1; i > 0; i--) {
             j = random.nextInt(i + 1);
             temp = chars[i];
             chars[i] = chars[j];
@@ -112,7 +130,7 @@ public class CharacterGenerator {
         }
 
         // Copy the shuffled array back to the buffer
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < bufferLength; i++) {
             buffer.put(buffer.position() + i, chars[i]);
         }
     }
