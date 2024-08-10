@@ -49,10 +49,10 @@ class CharacterGeneratorTest {
 
     @Test
     void the_length_of_the_generator_limits_the_returned_length() {
-        final int length = 2;
-        GeneratorRule rule = new GeneratorRule(Characters.NUMERIC, 5);
+        final int length = 5;
+        GeneratorRule rule = new GeneratorRule(Characters.NUMERIC);
         String s = generator.generateCharacters(length, rule);
         assertEquals(length, s.length());
-        assertTrue(s.matches("[0-9]{2}"));
+        assertTrue(s.matches("[0-9]{5}"));
     }
 }
