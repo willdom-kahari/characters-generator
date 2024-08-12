@@ -16,8 +16,7 @@ import java.util.Random;
  */
 public class CharacterGenerator {
     private final Random random;
-    private int length;
-    private final List<GeneratorRule> rules = new ArrayList<>();
+
 
     /**
      * Instantiate a new CharacterGenerator with the provided randomizer
@@ -45,21 +44,36 @@ public class CharacterGenerator {
     public String generateCharacters(final int length, final GeneratorRule... rules) {
         return generateCharacters(length, Arrays.asList(rules));
     }
+    static GenerateCharacters generateCharacters() {
+        return new GenerateCharacters();
+    }
 
-    public static CharacterGenerator generateCharacters(){
-        return new CharacterGenerator();
+    static class GenerateCharacters{
+        private int length;
+        private final List<GeneratorRule> rules = new ArrayList<>();
+        GenerateCharacters(){
+        }
+        public GenerateCharacters withLength(final int length) {
+            this.length = length;
+            return this;
+        }
+        public GenerateCharacters withRule(final GeneratorRule rule) {
+            this.rules.add(rule);
+            return this;
+        }
+        public GenerateCharacters withRules(final List<GeneratorRule> rules) {
+            this.rules.addAll(rules);
+            return this;
+        }
+        public GenerateCharacters withRules(final GeneratorRule... rules) {
+            this.rules.addAll(Arrays.asList(rules));
+            return this;
+        }
+        public String build() {
+            return new CharacterGenerator().generateCharacters(this.length, this.rules);
+        }
     }
-    public CharacterGenerator withLength(final int length) {
-        this.length = length;
-        return this;
-    }
-    public CharacterGenerator withRule(final GeneratorRule rule) {
-        this.rules.add(rule);
-        return this;
-    }
-    public String build() {
-        return generateCharacters(this.length, this.rules);
-    }
+
 
 
     /**
