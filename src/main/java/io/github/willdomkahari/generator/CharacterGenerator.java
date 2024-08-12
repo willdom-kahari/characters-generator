@@ -24,7 +24,7 @@ public class CharacterGenerator {
      * @param random - The randomizer to use for generating characters
      */
     public CharacterGenerator(final Random random) {
-        this.random = random;
+        this.random = new Random(random.nextLong());
     }
 
     /**
