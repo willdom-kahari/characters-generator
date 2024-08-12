@@ -6,7 +6,7 @@
 
     <groupId>io.github.willdom-kahari</groupId>
     <artifactId>characters-generator</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <description>Generates random characters based on specific rules. Useful for password generation and use cases
         alike.
     </description>

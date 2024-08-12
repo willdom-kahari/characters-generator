@@ -55,4 +55,19 @@ class CharacterGeneratorTest {
         assertEquals(length, s.length());
         assertTrue(s.matches("[0-9]{5}"));
     }
+
+    @Test
+    void defined_length_must_be_equal_to_the_returned_length_with_characters_defined_with_the_fluent_api() {
+        final int length = 9;
+        String build = CharacterGenerator
+                .generateCharacters()
+                .withLength(length)
+                .withRule(new GeneratorRule(Characters.ALPHABETICAL, 6))
+                .withRules(new GeneratorRule(Characters.NUMERIC, 3))
+                .build();
+
+
+        assertEquals(length, build.length());
+        assertTrue(build.matches("[a-zA-Z0-9]+"));
+    }
 }
