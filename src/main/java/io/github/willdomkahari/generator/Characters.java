@@ -5,7 +5,7 @@ package io.github.willdomkahari.generator;
  *
  * @author <a href="mailto:developer.wadu@gmail.com">Willdom Kahari</a>
  */
-public enum Characters {
+public enum Characters implements ICharacters{
     /**
      * Small letters also known as LowerCase letters
      */
@@ -50,6 +50,7 @@ public enum Characters {
      *
      * @return the character set
      */
+    @Override
     public String getCharacters() {
         return characterSet;
     }
