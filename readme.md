@@ -1,6 +1,6 @@
 # Characters Generator
 
-*Version: 0.3.0*
+![Maven Central Version](https://img.shields.io/maven-central/v/io.github.willdom-kahari/characters-generator)
 
 ## Summary
 
