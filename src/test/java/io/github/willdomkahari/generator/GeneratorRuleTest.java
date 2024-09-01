@@ -37,4 +37,23 @@ class GeneratorRuleTest {
     void length_of_the_static_rule_must_be_1() {
         assertEquals(1, staticRule.getLength());
     }
+
+    @Test
+    void rule_defined_by_builder() {
+        GeneratorRule rule = GeneratorRule.create()
+               .withLength(5)
+               .withCharacters(Characters.SMALL)
+               .build();
+        assertEquals(5, rule.getLength());
+        assertEquals(Characters.SMALL.getCharacters(), rule.getCharacterSet());
+    }
+
+    @Test
+    void rule_defined_by_builder_no_length() {
+        GeneratorRule rule = GeneratorRule.create()
+                .withCharacters(Characters.SMALL)
+                .build();
+        assertEquals(1, rule.getLength());
+        assertEquals(Characters.SMALL.getCharacters(), rule.getCharacterSet());
+    }
 }

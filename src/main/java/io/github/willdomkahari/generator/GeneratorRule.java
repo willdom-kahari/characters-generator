@@ -45,4 +45,27 @@ public class GeneratorRule {
     public String getCharacterSet() {
         return characters.getCharacters();
     }
+    static GenerateRule create(){
+        return new GenerateRule();
+    }
+
+    static class GenerateRule{
+        private int length;
+        private ICharacters c;
+        GenerateRule(){
+            this.length = 1; // Default length
+        }
+        public GenerateRule withLength(final int length) {
+            this.length = length;
+            return this;
+        }
+        public GenerateRule withCharacters(final ICharacters characters) {
+            this.c = characters;
+            return this;
+        }
+        public GeneratorRule build() {
+            return new GeneratorRule(this.c, this.length);
+        }
+
+    }
 }
