@@ -6,7 +6,7 @@
 
     <groupId>io.github.willdom-kahari</groupId>
     <artifactId>characters-generator</artifactId>
-    <version>0.4.0</version>
+    <version>0.5.0</version>
     <description>Generates random characters based on specific rules. Useful for password generation and use cases
         alike.
     </description>
@@ -30,7 +30,7 @@
     <licenses>
         <license>
             <name>The Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
     <developers>
