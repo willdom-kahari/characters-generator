@@ -24,6 +24,7 @@ Characters Generator  is available on Maven Central.
 * For your specific dependency manager visit [characters-generator](https://central.sonatype.com/artifact/io.github.willdom-kahari/characters-generator) on maven central.
 
 ## Examples
+### one
 
 * Define a rule
 
